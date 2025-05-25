@@ -1,0 +1,65 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/bitcraze/crazyflie/protos/Crazyflie.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/OilBarrel.proto"
+
+WorldInfo {
+  info [
+    "Bitcraze's Crazyflie drone obstacle avoidance simulator."
+  ]
+  title "Crazyflie Obstacle Avoidance"
+}
+Viewpoint {
+  orientation -0.5734625954037341 0.5734626281632299 0.5850480884277243 2.0828917418710198
+  position -0.16197061269548468 -0.1263013124091145 22.491247418765475
+  follow "Crazyflie"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  appearance Appearance {
+    material Material {
+      diffuseColor 0 1 0
+    }
+  }
+}
+Floor {
+  translation 0 3 0.001
+  name "Target"
+  size 0.5 0.5
+  appearance Appearance {
+    material Material {
+      diffuseColor 1 1 0
+    }
+  }
+}
+Floor {
+  translation 0 -3 0.001
+  name "Start"
+  size 0.5 0.5
+  appearance Appearance {
+    material Material {
+      diffuseColor 1 0 0
+    }
+  }
+}
+Crazyflie {
+  translation 0 -3 0.015
+  rotation 0 0 1 1.5707996938995747
+  controller "crazyflie_py_obstacleAvoidance"
+  extensionSlot [
+    Camera {
+      name "HiMax Camera"
+      width 324
+      height 324
+    }
+  ]
+}
+OilBarrel {
+  name "oil barrel_1"
+}
